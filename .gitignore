@@ -1,3 +1,4 @@
 setenv.maven.template.*
 apache-maven-*
 assignment.stdout*
+target/
