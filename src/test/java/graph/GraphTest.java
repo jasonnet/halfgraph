@@ -10,12 +10,16 @@ import java.util.Iterator;
 /**
  * Unit test for Graph. 
  *  
- * Limitations: Because of how much interaction we have between 
- * our classes, most hypothetical unit tests would look a lot 
- * like "function" tests.  And right now we have a lot of
+ * <p>Limitations: Because of how much interaction we have 
+ * between our classes, most hypothetical unit tests would look 
+ * a lot like "function" tests.  And right now we have a lot of 
  * function test in our FunctionTest class.  So right now these
  * unit tests focus on what can't easily be tested in 
- * FunctionTest's use of snapshots.
+ * FunctionTest's use of snapshots.<p>
+ *  
+ * <p>Limitation: There is not yet any testing to confirm that 
+ * methods are suitably set to public or private or 
+ * protected.<p> 
  *  
  */
 public class GraphTest 
@@ -35,14 +39,6 @@ public class GraphTest
             cnt++;
         }
         assertTrue( cnt==expected_size );
-    }
-    /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
     }
 
     @Test
@@ -79,8 +75,16 @@ public class GraphTest
 
         Step queryAll = graph.V();
         testIterator(queryAll, 1);
+    }
 
+    @Test
+    public void shouldAcceptNullId_addVertex() {
+        Graph graph = new Graph();
+        Vertex v1nameless = graph.addVertex(LABEL_PERSON, null);
+        assertNotNull(v1nameless);
 
+        Step queryAll = graph.V();
+        testIterator(queryAll, 1);
     }
 
     @Test
@@ -105,6 +109,23 @@ public class GraphTest
         } catch (Exception exc) {
             assertTrue("unexpected exception", false);
         }
+
+    }
+
+    @Test
+    public void shouldThrowExceptions_V() {
+        Graph graph = new Graph();
+        Vertex v2mike = graph.addVertex(null, "mike");
+        assertNotNull(v2mike);
+        try {
+            Step step1 = graph.V(null);
+            assertTrue("expected exception did not occur", false);
+        } catch (IllegalArgumentException exc) {
+            assertTrue(true);
+        } catch (Exception exc) {
+            assertTrue("unexpected exception", false);
+        }
+
     }
 
 

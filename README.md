@@ -21,19 +21,19 @@ not be described here.
 If you've not installed Maven, you'll need it if you want
 to do unit testing.  (If you are an expert in JUnit, you 
 might be able to devise an alternate approach, but for the
-rest of us, installing Maven is an easy way to set up these
-JUnit tests.
+rest of us, installing Maven is an easy way to set up 
+JUnit testing.
 
 ### Setting up Maven
 If you already have Maven set up, you can skip this step.
 
 There are a variety of ways to set up Maven.  For example, 
-there sometimes are `yum` or `apt get` methods that the 
-root account of a machine can use.   
+the root user of a machine can often use `yum` or `apt get` 
+to install it.
 
 As a non-root user of Linux machines, I find 
 [mvninstall](https://github.com/jasonnet/mvninstall) helpful.
-This project includes an updated copy of that which you can
+This project includes an updated copy of mvninstall which you can
 invoke to install Maven:
 
 ```
@@ -52,7 +52,7 @@ your directory.
 You should invoke it now and whenever you need Maven in a new shell session.
 
 ```
-   source setenv.maven.template.source
+source setenv.maven.template.source
 ```
 
 ## Function Testing
@@ -67,12 +67,14 @@ make function
 This will compile the code and then run the FunctionTest.java class.   That class 
 will create a simple graph and run a set of traversals on it.  The results of that 
 is captured in `target/test.stdout.latest.log`.  It then compares that snapshot to 
-the `test.stdout.expected.log` that is provided with this test.
+the `test.stdout.expected.log` that is provided with this project.  If they are
+identical, nothing will be shown.   But if there is a mismatch, the `diff` output
+will be shown on the sceen.
 
-If you'd like to see some examples of how to use HalfGraph, look at the source 
-code to graph.FunctionTest.
+If you'd like to see some examples of how to use HalfGraph, look at the 
+FunctionTest.java.
 
-Feel free to modify FunctionTest.java to suit your needs.   If your change runTestSuiteOnce,
+Feel free to modify FunctionTest.java to suit your needs.   If you change runTestSuiteOnce,
 the output in `target/test.stdout.latest.log` might change in which case the
 test will fail.   If this is your intent, you might want to copy the output produced there
 once you believe it is correct:
@@ -81,7 +83,10 @@ cp target/test.stdout.latest.log  test.stdout.expected.log
 ```
 This should let the tests complete without warning.
 
-If you just want to experiment, modify the runAssignment method to suit your needs.
+FunctionTest.java also includes a runAssignment method.  The output of that method
+will be shown on the screen during a function test, but it is not compared with
+any expected output.   If you just want to experiment with the HalfGraph API, modify 
+the runAssignment method to suit your needs.
 
 ## Unit testing
 

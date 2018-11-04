@@ -26,8 +26,13 @@ compile:
 	javac  -Xlint:unchecked  -d target/test-classes  -cp target/classes          src/test/java/graph/FunctionTest.java
 
 javadoc:
+	@echo "*** javadoc ***"
 	@mkdir -p target/javadoc
 	javadoc -d target/javadoc   src/main/java/graph/*
+	@echo "*** javadoc public only ***"
+	@mkdir -p target/javadoc/public
+	javadoc -d target/javadoc/public -public  src/main/java/graph/*
+
 
 
 MVN_VER=3.6.0
