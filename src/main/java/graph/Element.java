@@ -12,6 +12,11 @@ import java.util.Optional;
  * <p>Limitation: Property values must be expressed as strings.
  * </p> 
  * 
+ * <p>Limitation: (post-deadline-comment) This code would be 
+ * better served by use of @NonNull and @Nullable annotations 
+ * and a verifier instead of Optional. 
+ * </p> 
+ * 
  * @author Jason (11/4/2018)
  */
 abstract
@@ -21,7 +26,7 @@ class Element {
     private HashMap<String,String>  _props = new HashMap<>();
 
     protected Graph _g;
-    protected Optional<String> _label;
+    protected Optional<String> _label;  // post-deadline-comment: todo: stop using Optional and start using a verifier, @NonNull and @Nullable
 
     /**
      * 

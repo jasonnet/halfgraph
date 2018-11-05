@@ -14,7 +14,7 @@ import java.util.Iterator;
  */
 public
 class Vertex extends Element {
-    private Optional<String> _exid;
+    private Optional<String> _exid;  // post-deadline-comment: todo: stop using Optional and start using a verifier, @NonNull and @Nullable
     private ArrayList<Edge> _outs = new ArrayList<>();
     private ArrayList<Edge> _ins = new ArrayList<>();
 
