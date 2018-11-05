@@ -13,16 +13,17 @@ cd halfgraph
 ```    
 
 If you've not already installed the Java 1.8 (or higher)
-development tools, do that now.   -- There are a variety of ways to 
-do this.  If you are a root user on a Linux machine, `yum` or 
-`apt get` can be used to achieve this.  The steps to take will 
-not be described here.
+development tools, do that now.   -- There are many ways to 
+do that.  If you are a root user on a Linux machine, `yum` or 
+`apt get` can be used to achieve this.  A web search for 
+'install java` should reveal additional methods.
+
 
 If you've not installed Maven, you'll need it if you want
 to do unit testing.  (If you are an expert in JUnit, you 
 might be able to devise an alternate approach, but for the
 rest of us, installing Maven is an easy way to set up 
-JUnit testing.
+JUnit testing.)
 
 ### Setting up Maven
 If you already have Maven set up, you can skip this step.
@@ -46,10 +47,9 @@ rm apache-maven-3.6.0
 build/install_maven.sh
 ```
 
-Once you finish there will be a generated `setenv.maven.template.source` in 
-your directory.
-
-You should invoke it now and whenever you need Maven in a new shell session.
+Once you finish, there will be a generated `setenv.maven.template.source` in 
+your directory.  You should invoke it now and whenever you need Maven in a 
+new shell session:
 
 ```
 source setenv.maven.template.source
@@ -57,36 +57,37 @@ source setenv.maven.template.source
 
 ## Function Testing
 
-The main thing you can easily do with this project is function testing.  To 
-start function testing invoke:
+The easiest way to use this code base is to do use and modify the function 
+testing provided.  To start function testing invoke:
 
 ```
 make function
 ```
 
-This will compile the code and then run the FunctionTest.java class.   That class 
-will create a simple graph and run a set of traversals on it.  The results of that 
-is captured in `target/test.stdout.latest.log`.  It then compares that snapshot to 
-the `test.stdout.expected.log` that is provided with this project.  If they are
-identical, nothing will be shown.   But if there is a mismatch, the `diff` output
-will be shown on the sceen.
+This will compile the code and then run the FunctionTest.java class.   That 
+class will create a simple graph and run a set of traversals on it.  The 
+results of that is captured in `target/test.stdout.latest.log`.  It then 
+compares that snapshot to the `test.stdout.expected.log` that is provided 
+with this project.  If they are identical, nothing will be shown.   But 
+if there is a mismatch, the `diff` output will be shown on the sceen.
 
-If you'd like to see some examples of how to use HalfGraph, look at the 
+If you'd like to see some examples of how to use the HalfGraph API, look at 
 FunctionTest.java.
 
-Feel free to modify FunctionTest.java to suit your needs.   If you change runTestSuiteOnce,
-the output in `target/test.stdout.latest.log` might change in which case the
-test will fail.   If this is your intent, you might want to copy the output produced there
-once you believe it is correct:
+Feel free to modify FunctionTest.java to suit your needs.   If you change 
+runTestSuiteOnce, the output in `target/test.stdout.latest.log` might change 
+in which case the test will fail and you'll see the diff output each time you
+run the test.  If this is your intent, you might want to copy the output 
+produced there once you believe it is correct:
 ```
 cp target/test.stdout.latest.log  test.stdout.expected.log
 ```
-This should let the tests complete without warning.
+This should let the tests complete without further warning.
 
-FunctionTest.java also includes a runAssignment method.  The output of that method
-will be shown on the screen during a function test, but it is not compared with
-any expected output.   If you just want to experiment with the HalfGraph API, modify 
-the runAssignment method to suit your needs.
+FunctionTest.java also includes a runAssignment method.  The output of that 
+method will be shown on the screen during a function test, but it is not 
+compared with any expected output.   If you just want to experiment with the 
+HalfGraph API, modify the runAssignment method to suit your needs.
 
 ## Unit testing
 
