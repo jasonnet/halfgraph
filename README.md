@@ -100,4 +100,13 @@ make junit
 This uses Maven to run the unit tests so if you've not set up Maven, you will 
 need to do that.
 
+## Bugs / To-Do:
+
+Graph Size - One should not create a graph with more than a few million 
+vertices or edges.  Todo: this should be formally enforced in the code.
+(post-deadline-comment)
+
+Thread Safety - This implementation is not thread safe. (post-deadline-comment)
+
+
 
